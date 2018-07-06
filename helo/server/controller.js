@@ -26,16 +26,16 @@ module.exports ={
       .catch(()=>res.status(500).send())
     },
 
-    //     // for getting the post
-    //   }
-
-
-
-    //   addPost: (req, res) =>{
-
-    //     //for adding the post 
-    //   }
-
+  // adding post to the data base
+    
+    addPost: (req, res) =>{
+      const db = req.app.get("db")
+      const {title, img, content, authorid} = req.body
+      console.log("Hey we just addPost")
+      db.add_post([title, img, content, authorid])
+      .then(posts => res.status(200).send(posts))
+      .catch(()=>res.status(500).send())
+    }
 
 
   
