@@ -1,8 +1,9 @@
 import React from "react";
 import "./Nav.css"
 import {Link} from "react-router-dom"
-
-export default function Nav(props){
+import { connect } from "react-redux";
+ 
+ function Nav(props){
   console.log(props)
 return(
     <div className="nav_wrapper">
@@ -14,5 +15,14 @@ return(
     </div>  
   )
 }
+
+function mapStateToProps(state){
+  console.log(state)
+  return{
+    prof_img: state.prof_pic,
+    username: state.username
+  }
+}
+export default connect(mapStateToProps)(Nav)
 
 

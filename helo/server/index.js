@@ -12,7 +12,8 @@ const port = SERVER_PORT;
 massive(CONNECTION_STRING).then(db => app.set("db", db))
 
  app.post("/api/login", controller.login )
- app.post("/api/register ", controller.register );
+ //app.post("/api/register ", controller.register );
+app.post('/api/newuser', controller.register)
  app.get("/api/posts", controller.getPosts )
  app.post("/api/addpost", controller.addPost);
 

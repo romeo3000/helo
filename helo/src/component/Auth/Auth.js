@@ -1,9 +1,10 @@
 import React, {Component} from "react";
-//import {getLoginData} from "./../../ducks/reducer";
+import {getLoginData} from "./../../ducks/reducer";
+import {connect} from "react-redux"
 import axios from "axios"
 import "./Auth.css"
 
-export default class Auth extends Component{
+class Auth extends Component{
   constructor(){
     super()
 
@@ -35,7 +36,8 @@ export default class Auth extends Component{
 register() {
   const {usernameInput, passwordInput} = this.state
   if (usernameInput && passwordInput){
-    axios.post('/api/register', {username: usernameInput, password: passwordInput}).then(res=> {
+    axios.post('/api/newuser', {username: usernameInput, password: passwordInput})
+    .then(res=> {
       console.log(res.data)
       if (res.data.length !== 0){
         const {id, username, password, profile_pic } = res.data[0];
@@ -43,6 +45,7 @@ register() {
         this.props.history.push("/dashboard")
       }
     })
+    .catch(err => console.log(err))
   }else{
     this.setState({error:'Wait up something went wrong! '})
   }
@@ -75,7 +78,7 @@ register() {
   }
 }
 
-
+export default connect(null, {getLoginData})(Auth)
 
 
           
