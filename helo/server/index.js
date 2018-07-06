@@ -11,7 +11,12 @@ app.use(bodyParser.json())
 const port = SERVER_PORT;
 massive(CONNECTION_STRING).then(db => app.set("db", db))
 
+ app.post("/api/login", controller.login )
+ app.post("/api/register ", controller.register );
 
+ //app.post("/api/addpost", controller.addPost);
+
+//app.get("/api/posts", controller.getPost )
 
 
 
