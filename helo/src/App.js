@@ -6,19 +6,23 @@ import Dashboard from './component/Dashboard/Dashboard';
 import Auth from './component/Auth/Auth';
 import Post from './component/Post/Post'
 import Nav from './component/Nav/Nav';
+import route from './routes';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Nav/>
-        <Auth/>
-        <Dashboard/>
-        <Form/>
-        <Post />
+        
+          {route}
+      
       </div>
     );
   }
 }
 
 export default App;
+
+
+
+
+

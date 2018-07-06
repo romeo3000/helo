@@ -9,7 +9,7 @@ module.exports ={
         .catch(()=>res.status(500).send())
       },
    
-
+// setting up the registered user
       register: (req, res) =>{
         const db = req.app.get("db")
         const {username, password} = req.body
@@ -18,7 +18,13 @@ module.exports ={
         .catch(()=>res.status(500).send())
       },
 
-    //   getPosts:(req,res) =>{
+    //  getting the Post 
+    getPosts: (req, res) =>{
+      const db = req.app.get("db")
+      db.get_posts()
+      .then(posts => {console.log(posts); res.status(200).send(posts)})
+      .catch(()=>res.status(500).send())
+    },
 
     //     // for getting the post
     //   }
